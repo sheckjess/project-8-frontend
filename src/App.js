@@ -1,6 +1,11 @@
 import './App.css';
+import React, {Component} from 'react'
 
-function App() {
+class App extends Component {
+  constructor(){
+    super()
+  }
+}
   return (
     <div className="App">
       <header className="App-header">
@@ -8,6 +13,6 @@ function App() {
       </header>
     </div>
   );
-}
+
 
 export default App;
