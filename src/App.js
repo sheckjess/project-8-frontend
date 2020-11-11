@@ -1,18 +1,19 @@
 import './App.css';
 import React, {Component} from 'react'
-
+import { render } from '@testing-library/react';
+import LandButtons from './Components/LandButtons'
 class App extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+  }
+
+  render(){
+    return(
+      <div>
+        <LandButtons img={""} buttonTxt={"Cardio"} />
+        <LandButtons img={""} buttonTxt={"Strength"} />
+      </div>
+    );
   }
 }
-  return (
-    <div className="App">
-      <header className="App-header">
-        Hello World
-      </header>
-    </div>
-  );
-
-
 export default App;
