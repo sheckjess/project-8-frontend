@@ -10,7 +10,8 @@ class LandButtons extends Component {
     render(){
         return(
           <div>
-              <button>{this.props.buttonTxt}</button>
+            <img src={this.props.src} />
+            <button>{this.props.buttonTxt}</button>
           </div>
         );
       }
