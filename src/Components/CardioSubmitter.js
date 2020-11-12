@@ -15,8 +15,9 @@ class CardioSubmitter extends Component {
     }
 
     onChangeDate = (e) => {
-        console.log(e)
-        this.setState({date: e.target.value})
+        console.log(e.target)
+        this.setState({date: e.target})
+        console.log(this.state.date)
     }
 
     onChangeCardioType = (e) => {
