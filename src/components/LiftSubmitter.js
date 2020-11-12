@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-
 // Material UI
 import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
-
-
 // eslint-disable-next-line
 const axios = require("axios");
-
 class LiftSubmitter extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       date: "",
       musclegroup: "",
@@ -24,27 +19,21 @@ class LiftSubmitter extends Component {
       _numberOfSets: 0,
     };
   }
-
   onChangeDate = (e) => {
     this.setState({ date: e });
   };
-
   onChangeMuscleGroup = (e) => {
     this.setState({ musclegroup: e.target.value });
   };
-
   onChangeLiftName = (e) => {
     this.setState({ lift: e.target.value });
   };
-
   onChangeSets = (e) => {
     this.setState({ _numberOfSets: e.target.value });
   };
-
   onChangeReps = (e) => {
     //makes a copy of the sets array in state
     var tempArray = this.state.sets
-
     //if the item at the id already exists
     if (tempArray[e.target.id]) {
       tempArray[e.target.id].reps = e.target.value
@@ -54,14 +43,11 @@ class LiftSubmitter extends Component {
       newSet.reps = e.target.value
       tempArray[e.target.id] = newSet
     }
-
     this.setState({sets: tempArray})
   };
-
   onChangeRepWeight = (e) => {
     //makes a copy of the sets array in state
     var tempArray = this.state.sets
-
     //if the item at the id already exists
     if (tempArray[e.target.id]) {
       tempArray[e.target.id].pounds = e.target.value
@@ -71,25 +57,19 @@ class LiftSubmitter extends Component {
       newSet.pounds = e.target.value
       tempArray[e.target.id] = newSet
     }
-
     this.setState({sets: tempArray})
   };
-
   onSubmit = (e) => {
     e.preventDefault();
-    
     if (this.state._numberOfSets < this.state.sets.length)
       console.log('user deleted at least one set')
       var tempArray = this.state.sets
       tempArray.length = this.state._numberOfSets
       this.setState({sets: tempArray});
-
     axios.post('https://sculpt-fitness.herokuapp.com/lifting/add', this.state)
       .then(console.log('attempt submission'))
-
     window.location = '/'
   };
-
   render() {
     //create a reps element for each number in numberOfSets
     var arrayOfReps = [];
@@ -103,7 +83,6 @@ class LiftSubmitter extends Component {
         </div>
       );
     }
-
     return (
       <Container>
         <h1>Add Lift</h1>
@@ -143,9 +122,7 @@ class LiftSubmitter extends Component {
               max="10"
             ></Input>
           </div>
-
           {arrayOfReps}
-
           <Button variant="contained" color='primary' type="submit" className="">
             Submit
           </Button>
@@ -155,9 +132,7 @@ class LiftSubmitter extends Component {
     );
   }
 }
-
 export default LiftSubmitter;
-
 /* JSON FORMAT FOR A LIFT 
     {
       "date": "1519211911670",
