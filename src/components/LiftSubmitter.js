@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
+<<<<<<< HEAD:src/Components/LiftSubmitter.js
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+=======
+
+// Material UI
+import { Container } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { Select, MenuItem, InputLabel, Box } from '@material-ui/core';
+
+
+>>>>>>> 23bb977a101d68056f48d2df893faa92183e1b6f:src/components/LiftSubmitter.js
 // eslint-disable-next-line
 const axios = require("axios");
 
@@ -87,43 +98,44 @@ class LiftSubmitter extends Component {
     for (let i = 0; i < this.state._numberOfSets; i++) {
       arrayOfReps.push(
         <div>
-          <label>Set {i+1} Reps: </label>
+          <InputLabel>Set {i+1} Reps: </InputLabel>
           <input id={i} required onChange={this.onChangeReps} type="number" placeholder="5" min='1' max='100'></input>
-          <label>Set {i+1} Weight: </label>
+          <InputLabel>Set {i+1} Weight: </InputLabel>
           <input id={i} required onChange={this.onChangeRepWeight} type="number" placeholder="20" min='10' step='5' max='1000'></input>
         </div>
       );
     }
 
     return (
-      <>
-        <h3>Add Lift</h3>
+      <Container>
+        <h1>Add Lift</h1>
+        <Box maxWidth={400}>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Date: </label>
+          <div className="">
+            <InputLabel>Date: </InputLabel>
             <Calendar defaultView="month" onChange={this.onChangeDate} />
           </div>
-          <div className="form-group">
-            <label>Muscle Group: </label>
-            <select required onChange={this.onChangeMuscleGroup} type="select">
-              <option>Legs</option>
-              <option>Chest</option>
-              <option>Arms</option>
-              <option>Back</option>
-            </select>
+          <div className="">
+            <InputLabel>Muscle Group: </InputLabel>
+            <Select required onChange={this.onChangeMuscleGroup} type="select">
+              <MenuItem>Legs</MenuItem>
+              <MenuItem>Chest</MenuItem>
+              <MenuItem>Arms</MenuItem>
+              <MenuItem>Back</MenuItem>
+            </Select>
           </div>
-          <div className="form-group">
-            <label>Lift Name: </label>
-            <input
+          <div className="">
+            <InputLabel>Lift Name: </InputLabel>
+            <Input
               required
               onChange={this.onChangeLiftName}
               type="text"
               placeholder="Squat"
-            ></input>
+            ></Input>
           </div>
-          <div className="form-group">
-            <label>Sets: </label>
-            <input
+          <div className="">
+            <InputLabel>Sets: </InputLabel>
+            <Input
               required
               onChange={this.onChangeSets}
               type="number"
@@ -131,14 +143,14 @@ class LiftSubmitter extends Component {
               step="1"
               min="1"
               max="10"
-            ></input>
+            ></Input>
           </div>
 
           {arrayOfReps}
 
-          <button type="submit" className="">
+          <Button variant="contained" color='primary' type="submit" className="">
             Submit
-          </button>
+          </Button>
         </form>
         <Link to="/lifting/history">
             <button onClick={this.handleHistory}>
