@@ -2,7 +2,6 @@ import './App.css';
 import React, {Component} from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { render } from '@testing-library/react';
-
 import HomePage from './components/HomePage'
 import LiftSubmitter from './components/LiftSubmitter'
 
@@ -15,6 +14,8 @@ class App extends Component {
     return(
       <div>
         <Router>
+          <Link to="/lifting">
+          </Link>
           <Route path="/"
           component={HomePage} />
           <Route path="/lifting"

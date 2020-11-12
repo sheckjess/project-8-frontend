@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Calendar from "react-calendar";
 const axios = require('axios')
 
-class LandButtons extends Component {
+class LiftSubmitter extends Component {
   constructor(props) {
     super(props);
 
@@ -92,7 +92,7 @@ class LandButtons extends Component {
   }
 }
 
-export default LandButtons;
+export default LiftSubmitter;
 
 /* JSON FORMAT FOR A LIFT 
     {
