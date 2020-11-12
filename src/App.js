@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import CardioSubmitter from './components/CardioSubmitter'
 import LiftSubmitter from './components/LiftSubmitter'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import './components/LandButtons.css'
 class App extends Component {
   constructor(props){
     super(props)
