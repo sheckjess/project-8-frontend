@@ -29,9 +29,9 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-        
-      <AppBar position="static">
       <Router>
+      <AppBar position="static">
+      
         <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon/>
@@ -43,8 +43,8 @@ export default function ButtonAppBar() {
           </Link>
           {/* <Button href="/calender" color="inherit">Calender</Button> */}
         </Toolbar>
-        </Router>
       </AppBar>
+      </Router>
     </div>
   );
 }
