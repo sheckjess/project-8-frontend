@@ -8,9 +8,9 @@ class CardioSubmitter extends Component {
         this.state = {
             date: "",
             type: "",
-            minutes: "",
-            miles: "",
-            calories: ""
+            minutes: 0,
+            miles: 0,
+            calories: 0
         }
     }
 
