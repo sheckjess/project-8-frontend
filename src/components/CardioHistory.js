@@ -35,9 +35,9 @@ class CardioHistory extends Component{
                     return <div key={i}>
                         {lift.date}<br></br>
                         {lift.type}<br></br>
-                        {lift.minutes}<br></br>
-                        {lift.miles}<br></br>
-                        {lift.calories}<br></br>
+                        {lift.minutes} minutes<br></br>
+                        {lift.miles} miles<br></br>
+                        {lift.calories} cals<br></br>
                         <br></br>
                         </div>
                     })
