@@ -4,10 +4,6 @@ import React, {Component} from 'react'
 class LandButtons extends Component {
     constructor(props){
         super(props)
-        this.state = {
-            img: "",
-            buttonTxt: ""
-        }
     }
 
 
@@ -19,9 +15,6 @@ class LandButtons extends Component {
         );
       }
 }
-
-
-
 
 
 export default LandButtons

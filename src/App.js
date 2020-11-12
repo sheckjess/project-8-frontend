@@ -1,7 +1,8 @@
 import './App.css';
 import React, {Component} from 'react'
 import { render } from '@testing-library/react';
-import LandButtons from './Components/LandButtons'
+import LandButtons from './components/LandButtons'
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -10,8 +11,8 @@ class App extends Component {
   render(){
     return(
       <div>
-        <LandButtons img={""} buttonTxt={"Cardio"} />
-        <LandButtons img={""} buttonTxt={"Strength"} />
+        <LandButtons buttonTxt={"Cardio"} />
+        <LandButtons buttonTxt={"Strength"} />
       </div>
     );
   }
