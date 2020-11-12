@@ -48,7 +48,6 @@ class LiftSubmitter extends Component {
           <div className="form-group">
             <label>Date: </label>
             <Calendar
-              defaultActiveStartDate
               defaultView="month"
               onChange={this.onChangeDate}
             />
