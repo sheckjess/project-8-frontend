@@ -14,18 +14,35 @@ class CardioHistory extends Component{
 
     fetchHistory = (e) => {
         let url = "http://sculpt-fitness.herokuapp.com/cardio"
-        axios.get(url)
-            .then(res => {
-                let history = res.data
-                this.setState({ history })
+        fetch(url)
+            .then(res => res.json())
+            .then(history=>{
+                console.log(history)
+                this.setState({history: history})
             })
+    }
+    componentDidMount = () => {
+        this.fetchHistory()
     }
 
     render(){
         return(
             <div>
                 <h1>This is the cardio history</h1>
-                <p>Soon to be replaced with API data...</p>
+                {
+                    this.state.history.length ?
+                    this.state.history.map((lift, i)=>{
+                    return <div key={i}>
+                        {lift.date}<br></br>
+                        {lift.type}<br></br>
+                        {lift.minutes}<br></br>
+                        {lift.miles}<br></br>
+                        {lift.calories}<br></br>
+                        <br></br>
+                        </div>
+                    })
+                    : ""
+                    }
                 <Link to='/cardio'>
                     <button>
                         Back

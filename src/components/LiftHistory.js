@@ -30,7 +30,6 @@ class LiftHistory extends Component{
         return(
             <div>
                 <h1>This is the lifting history</h1>
-                <p>Soon to be replaced with API data...</p>
                     {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
