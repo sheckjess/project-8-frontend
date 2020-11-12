@@ -1,7 +1,9 @@
 import './App.css';
 import React, {Component} from 'react'
 import { render } from '@testing-library/react';
-import HomePage from './components/HomePage'
+import HomePage from './Components/HomePage'
+import NavBar from './Components/NavBar'
+
 
 class App extends Component {
   constructor(props){
@@ -11,6 +13,7 @@ class App extends Component {
   render(){
     return(
       <div>
+        <NavBar />
         <HomePage />
       </div>
     );
