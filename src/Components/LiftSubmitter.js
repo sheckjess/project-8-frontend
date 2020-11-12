@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 // eslint-disable-next-line
 const axios = require("axios");
 
@@ -76,6 +77,10 @@ class LiftSubmitter extends Component {
     //axios.post('https://sculpt-fitness.herokuapp.com/lifting/add', tempLift)
   };
 
+  handleHistory = (e) => {
+    console.log('handled')
+} 
+
   render() {
     //create a reps element for each number in numberOfSets
     var arrayOfReps = [];
@@ -135,6 +140,11 @@ class LiftSubmitter extends Component {
             Submit
           </button>
         </form>
+        <Link to="/lifting/history">
+            <button onClick={this.handleHistory}>
+                Lifting History
+            </button>
+        </Link>
       </>
     );
   }

@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 const axios = require('axios')
 
 class CardioSubmitter extends Component {
     constructor(props){
         super(props)
         this.state = {
-            date: "",
-            type: "",
-            minutes: 0,
-            miles: 0,
-            calories: 0
+            history: "",
+            newCardio: {
+                date: "",
+                type: "",
+                minutes: 0,
+                miles: 0,
+                calories: 0,
+            }
         }
     }
 
@@ -41,8 +45,25 @@ class CardioSubmitter extends Component {
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-    }
+        e.preventDefault()
+        let url = "http://sculpt-fitness.herokuapp.com/cardio"
+        fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.state.history),
+      })
+          .then(res => res.json())
+          .then(history=>{
+            this.setState({cardio: [...this.state.history, history]})
+            console.log(this.state)
+          })
+      }
+
+      handleHistory = (e) => {
+          console.log('handled')
+      } 
 
     render(){
         return(
@@ -101,6 +122,11 @@ class CardioSubmitter extends Component {
                         Submit
                     </button>
                 </form>
+                <Link to="/cardio/history">
+                    <button onClick={this.handleHistory}>
+                        Cardio History
+                    </button>
+                </Link>
             </div>
         )
     }
