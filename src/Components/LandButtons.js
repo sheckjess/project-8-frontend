@@ -7,11 +7,17 @@ class LandButtons extends Component {
     }
 
 
+
+
+    componentWillUnmount(){
+      console.log("leaving home page")
+    }
+
     render(){
         return(
           <div>
             <img src={this.props.src} />
-            <button>{this.props.buttonTxt}</button>
+            <button onClick={this.componentWillUnmount}>{this.props.buttonTxt}</button>
           </div>
         );
       }
