@@ -14,11 +14,15 @@ class LiftHistory extends Component{
 
     fetchHistory = (e) => {
         let url = "http://sculpt-fitness.herokuapp.com/lifting"
-        axios.get(url)
-            .then(res => {
-                let history = res.data
-                this.setState({ history })
+        fetch(url)
+            .then(res => res.json())
+            .then(history=>{
+                console.log(history)
+                this.setState({history: history})
             })
+    }
+    componentDidMount = () => {
+        this.fetchHistory()
     }
 
 
@@ -27,6 +31,20 @@ class LiftHistory extends Component{
             <div>
                 <h1>This is the lifting history</h1>
                 <p>Soon to be replaced with API data...</p>
+                    {
+                    this.state.history.length ?
+                    this.state.history.map((lift, i)=>{
+                    return <div key={i}>
+                        {lift.date}<br></br>
+                        {lift.musclegroup}<br></br>
+                        {lift.lift}<br></br>
+                        {lift.sets[0].reps} reps {lift.sets[0].pounds} lbs.<br></br>
+                        <br></br>
+                        <br></br>
+                        </div>
+                    })
+                    : ""
+                    }
                 <Link to='/lifting'>
                     <button>
                         Back
