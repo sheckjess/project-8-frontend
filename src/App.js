@@ -14,10 +14,9 @@ class App extends Component {
     return(
       <div>
         <Router>
-          <Link to="/lifting">
-          </Link>
           <Route path="/"
           component={HomePage} />
+          <Route path="/cardio" />
           <Route path="/lifting"
           component={LiftSubmitter} />
         </Router>
