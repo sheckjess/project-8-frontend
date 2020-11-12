@@ -2,8 +2,10 @@ import './App.css';
 import React, {Component} from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { render } from '@testing-library/react';
-import HomePage from './Components/HomePage'
-import LiftSubmitter from './Components/LiftSubmitter'
+import HomePage from './components/HomePage'
+import CardioSubmitter from './components/CardioSubmiter'
+import LiftSubmitter from './components/LiftSubmitter'
+
 
 class App extends Component {
   constructor(props){
@@ -14,10 +16,11 @@ class App extends Component {
     return(
       <div>
         <Router>
-          <Route path="/"
+          <Route exact path="/"
           component={HomePage} />
-          <Route path="/cardio" />
-          <Route path="/lifting"
+          <Route exact path="/cardio"
+          component={CardioSubmitter} />
+          <Route exact path="/lifting"
           component={LiftSubmitter} />
         </Router>
       </div>
