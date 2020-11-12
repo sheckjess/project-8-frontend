@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 
 // Material UI
 import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { Select, MenuItem, InputLabel, Box } from '@material-ui/core';
+import { InputLabel, Box } from '@material-ui/core';
 
 
 // eslint-disable-next-line
@@ -41,7 +42,6 @@ class LiftSubmitter extends Component {
   };
 
   onChangeReps = (e) => {
-    console.log(e);
     //makes a copy of the sets array in state
     var tempArray = this.state.sets
 
@@ -59,7 +59,6 @@ class LiftSubmitter extends Component {
   };
 
   onChangeRepWeight = (e) => {
-    console.log(e);
     //makes a copy of the sets array in state
     var tempArray = this.state.sets
 
@@ -79,9 +78,16 @@ class LiftSubmitter extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     
-    console.log(this.state)
+    if (this.state._numberOfSets < this.state.sets.length)
+      console.log('user deleted at least one set')
+      var tempArray = this.state.sets
+      tempArray.length = this.state._numberOfSets
+      this.setState({sets: tempArray});
 
-    //axios.post('https://sculpt-fitness.herokuapp.com/lifting/add', tempLift)
+    axios.post('https://sculpt-fitness.herokuapp.com/lifting/add', this.state)
+      .then(console.log('attempt submission'))
+
+    window.location = '/'
   };
 
   render() {
@@ -91,9 +97,9 @@ class LiftSubmitter extends Component {
       arrayOfReps.push(
         <div>
           <InputLabel>Set {i+1} Reps: </InputLabel>
-          <input id={i} required onChange={this.onChangeReps} type="number" placeholder="5" min='1' max='100'></input>
+          <Input id={i} required onChange={this.onChangeReps} type="number" placeholder="5" min='1' max='100'></Input>
           <InputLabel>Set {i+1} Weight: </InputLabel>
-          <input id={i} required onChange={this.onChangeRepWeight} type="number" placeholder="20" min='10' step='5' max='1000'></input>
+          <Input id={i} required onChange={this.onChangeRepWeight} type="number" placeholder="20" min='10' step='5' max='1000'></Input>
         </div>
       );
     }
@@ -109,12 +115,12 @@ class LiftSubmitter extends Component {
           </div>
           <div className="">
             <InputLabel>Muscle Group: </InputLabel>
-            <Select required onChange={this.onChangeMuscleGroup} type="select">
-              <MenuItem>Legs</MenuItem>
-              <MenuItem>Chest</MenuItem>
-              <MenuItem>Arms</MenuItem>
-              <MenuItem>Back</MenuItem>
-            </Select>
+            <select required onChange={this.onChangeMuscleGroup} value={this.state.musclegroup}>
+              <option>Legs</option>
+              <option>Chest</option>
+              <option>Arms</option>
+              <option>Back</option>
+            </select>
           </div>
           <div className="">
             <InputLabel>Lift Name: </InputLabel>
