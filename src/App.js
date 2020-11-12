@@ -8,13 +8,11 @@ import LiftSubmitter from './components/LiftSubmitter'
 import CardioHistory from './components/CardioHistory'
 import LiftHistory from './components/LiftHistory'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
-
+import './components/LandButtons.css'
 class App extends Component {
   constructor(props){
     super(props)
   }
-
   render(){
     return(
       <div>
@@ -31,7 +29,6 @@ class App extends Component {
           <Route exact path="/lifting/history"
           component={LiftHistory} />
         </Router>
-        
       </div>
     );
   }

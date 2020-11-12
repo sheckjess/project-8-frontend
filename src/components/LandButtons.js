@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './LandButtons.css'
 
 
 class LandButtons extends Component {
@@ -8,9 +9,9 @@ class LandButtons extends Component {
 
     render(){
         return(
-          <div>
-            <img src={this.props.src} />
-            <button>{this.props.buttonTxt}</button>
+          <div className="container">
+            <img src={this.props.src} className="button-image" alt="buttons" />
+            {/* <button>{this.props.buttonTxt}</button> */}
           </div>
         );
       }
