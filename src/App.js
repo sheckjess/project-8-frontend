@@ -1,7 +1,7 @@
 import './App.css';
 import React, {Component} from 'react'
 import { render } from '@testing-library/react';
-import LandButtons from './components/LandButtons'
+import HomePage from './components/HomePage'
 
 class App extends Component {
   constructor(props){
@@ -11,8 +11,7 @@ class App extends Component {
   render(){
     return(
       <div>
-        <LandButtons buttonTxt={"Cardio"} />
-        <LandButtons buttonTxt={"Strength"} />
+        <HomePage />
       </div>
     );
   }
