@@ -9,6 +9,7 @@ import CardioHistory from './components/CardioHistory'
 import LiftHistory from './components/LiftHistory'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './components/LandButtons.css'
+import StartPage from './components/StartPage'
 class App extends Component {
   constructor(props){
     super(props)
@@ -16,7 +17,8 @@ class App extends Component {
   render(){
     return(
       <div>
-        <NavBar />
+        {/* <NavBar /> */}
+        <StartPage />
         <Router>
           <Route exact path="/"
           component={HomePage} />
