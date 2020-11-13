@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-const axios = require('axios')
+import { Container } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { InputLabel, Box } from '@material-ui/core';
 
 class CardioSubmitter extends Component {
     constructor(props){
@@ -67,18 +71,19 @@ class CardioSubmitter extends Component {
 
     render(){
         return(
-            <div>
-                <h3>Add Cardio</h3>
+            <Container>
+                <h1>Add Cardio</h1>
+                <Box maxWidth={400}>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Date: </label>
+                    <div>
+                        <InputLabel>Date: </InputLabel>
                         <Calendar 
                             defaultView="month"
                             onChange={this.onChangeDate}
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Cardio Type: </label>
+                    <div>
+                        <InputLabel>Cardio Type: </InputLabel>
                         <select 
                         required 
                         onChange={this.onChangeCardioType}
@@ -89,45 +94,51 @@ class CardioSubmitter extends Component {
                             <option>Swimming</option>
                         </select>
                     </div>
-                    <div className="form-group">
-                        <label>Minutes: </label>
-                        <input
+                    <div>
+                        <InputLabel>Minutes: </InputLabel>
+                        <Input
                             required 
                             onChange={this.onChangeMinutes}
                             type="number"
                             placeholder="Workout duration...">
-                        </input>
+                        </Input>
                     </div>
-                    <div className="form-group">
-                        <label>Miles: </label>
-                        <input
+                    <div>
+                        <InputLabel>Miles: </InputLabel>
+                        <Input
                             required 
                             onChange={this.onChangeMiles}
                             type="number"
                             placeholder="Workout distance...">
-                        </input>
+                        </Input>
                     </div>
-                    <div className="form-group">
-                        <label>Calories: </label>
-                        <input
+                    <div>
+                        <InputLabel>Calories: </InputLabel>
+                        <Input
                             required 
                             onChange={this.onChangeCalories}
                             type="number"
                             placeholder="Calories burned...">
-                        </input>
+                        </Input>
                     </div>
-                    <button
+                    <Button
+                        variant="contained"
+                        color="primary"
                         type="submit"
                         className="">
                         Submit
-                    </button>
+                    </Button>
                 </form>
                 <Link to="/cardio/history">
-                    <button onClick={this.handleHistory}>
+                    <Button 
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleHistory}>
                         Cardio History
-                    </button>
+                    </Button>
                 </Link>
-            </div>
+                </Box>
+            </Container>
         )
     }
 }
