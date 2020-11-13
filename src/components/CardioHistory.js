@@ -29,9 +29,9 @@ class CardioHistory extends Component{
         e.preventDefault()
         console.log(e)
         axios
-            .delete("https://sculpt-fitness.herokuapp.com/cardio/delete/", this.state)
+            .delete("https://sculpt-fitness.herokuapp.com/cardio/delete/", data)
             .then(() => {
-                console.log("attempted delete")
+                console.log(data)
             })
             
     }

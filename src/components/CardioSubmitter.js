@@ -14,7 +14,6 @@ class CardioSubmitter extends Component {
         this.state = {
             history: "",
             newCardio: {
-                _id: "",
                 date: "",
                 type: "",
                 minutes: 0,
