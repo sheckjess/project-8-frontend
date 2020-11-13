@@ -4,6 +4,9 @@ import cardioimg from "../images/cardioimg.png"
 import liftingimg from "../images/liftingimg.jpg"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './HomePage.css'
+import cardioimg2 from '../images/cardioimg2.png'
+import liftingimg2 from '../images/liftingimg2.png'
+
 class HomePage extends Component{
     constructor(props){
         super(props)
@@ -12,12 +15,12 @@ class HomePage extends Component{
 
     render(){
         return(
-            <div className="testing">
+            <div className="container">
                 <Link to="/cardio">
-                    <LandButtons src={cardioimg} buttonTxt={"Cardio"} className="link-buttons" />
+                    <LandButtons src={cardioimg2} buttonTxt={"Cardio"} className="link-buttons" />
                 </Link>
                 <Link to="/lifting">
-                    <LandButtons src={liftingimg} buttonTxt={"Lifting"} className="link-buttons"/>
+                    <LandButtons src={liftingimg2} buttonTxt={"Lifting"} className="link-buttons"/>
                 </Link>
             </div>
         )
