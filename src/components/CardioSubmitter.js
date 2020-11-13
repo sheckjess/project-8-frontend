@@ -130,7 +130,10 @@ class CardioSubmitter extends Component {
                     </Button>
                 </form>
                 <Link to="/cardio/history">
-                    <Button onClick={this.handleHistory}>
+                    <Button 
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleHistory}>
                         Cardio History
                     </Button>
                 </Link>
