@@ -160,7 +160,7 @@ class LiftSubmitter extends Component {
             <Button variant="contained"
               color="primary"
               type="submit"
-              className="">Cardio History</Button>
+              className="">Lifting History</Button>
           </Link>
         </Box>
       </Container>

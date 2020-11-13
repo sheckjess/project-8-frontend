@@ -36,7 +36,7 @@ export default function ButtonAppBar() {
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon/>
           </IconButton> */}
-          <Link to='/'style={{ textDecoration: 'none' }}>
+          <Link to='/' style={{ textDecoration: 'none' }}>
           <Typography  variant="h6" className={classes.title}>
             MRJ FITNESS
           </Typography>

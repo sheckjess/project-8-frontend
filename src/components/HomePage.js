@@ -16,12 +16,12 @@ class HomePage extends Component{
     render(){
         return(
             <div className="container">
-                <Link to="/cardio">
+                {/* <Link to="/cardio">
                     <LandButtons src={cardioimg2} buttonTxt={"Cardio"} className="link-buttons" />
                 </Link>
                 <Link to="/lifting">
                     <LandButtons src={liftingimg2} buttonTxt={"Lifting"} className="link-buttons"/>
-                </Link>
+                </Link> */}
             </div>
         )
     }
