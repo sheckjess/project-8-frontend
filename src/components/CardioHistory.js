@@ -1,8 +1,11 @@
 import { render } from "@testing-library/react";
 import React, { Component } from "react";
-import axios from 'axios'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { Container } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { InputLabel, Box } from '@material-ui/core';
+const axios = require("axios");
 
 class CardioHistory extends Component{
     constructor(props){
@@ -22,10 +25,22 @@ class CardioHistory extends Component{
             })
     }
 
+    handleDelete = (e) => {
+        e.preventDefault()
+        console.log(e)
+        axios
+            .delete("https://sculpt-fitness.herokuapp.com/cardio/delete/", this.state)
+            .then(() => {
+                console.log("attempted delete")
+            })
+            
+    }
+
     render(){
         return(
-            <div>
-                <h1>This is the cardio history</h1>
+            <Container>
+                <h1>Your previous cardio workouts</h1>
+                <Box>
                 {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
@@ -35,21 +50,29 @@ class CardioHistory extends Component{
                         {lift.minutes} minutes<br></br>
                         {lift.miles} miles<br></br>
                         {lift.calories} cals<br></br>
+                        <button onClick={this.handleDelete}>
+                            delete
+                        </button>
                         <br></br>
                         </div>
                     }) : ""
                 }
                 <Link to='/cardio'>
-                    <button>
+                    <Button
+                        variant="contained"
+                        color="primary">
                         Back
-                    </button>
+                    </Button>
                 </Link>
                 <Link to='/'>
-                    <button>
+                    <Button
+                        variant="contained"
+                        color="primary">
                         Home
-                    </button>
+                    </Button>
                 </Link>
-            </div>
+                </Box>
+            </Container>
         )
     }
 }

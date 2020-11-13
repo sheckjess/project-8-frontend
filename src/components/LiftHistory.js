@@ -1,8 +1,10 @@
 import { render } from "@testing-library/react";
 import React, { Component } from "react";
-import axios from 'axios'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { Container } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { InputLabel, Box } from '@material-ui/core';
 
 class LiftHistory extends Component{
     constructor(props){
@@ -26,8 +28,9 @@ class LiftHistory extends Component{
 
     render(){
         return(
-            <div>
-                <h1>This is the lifting history</h1>
+            <Container>
+                <h1>Your previous lifts</h1>
+                <Box>
                     {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
@@ -42,16 +45,21 @@ class LiftHistory extends Component{
                     }) : ""
                     }
                 <Link to='/lifting'>
-                    <button>
+                    <Button
+                        variant="contained"
+                        color="primary">
                         Back
-                    </button>
+                    </Button>
                 </Link>
                 <Link to='/'>
-                    <button>
+                    <Button
+                        variant="contained"
+                        color="primary">
                         Home
-                    </button>
+                    </Button>
                 </Link>
-            </div>
+                </Box>
+            </Container>
         )
     }
 }
