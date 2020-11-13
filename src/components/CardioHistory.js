@@ -12,7 +12,7 @@ class CardioHistory extends Component{
         }
     }
 
-    fetchHistory = (e) => {
+    componentDidMount = () => {
         let url = "http://sculpt-fitness.herokuapp.com/cardio"
         fetch(url)
             .then(res => res.json())
@@ -20,9 +20,6 @@ class CardioHistory extends Component{
                 console.log(history)
                 this.setState({history: history})
             })
-    }
-    componentDidMount = () => {
-        this.fetchHistory()
     }
 
     render(){
@@ -40,9 +37,8 @@ class CardioHistory extends Component{
                         {lift.calories} cals<br></br>
                         <br></br>
                         </div>
-                    })
-                    : ""
-                    }
+                    }) : ""
+                }
                 <Link to='/cardio'>
                     <button>
                         Back
