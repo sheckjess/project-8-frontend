@@ -1,7 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,17 +11,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import headerimg from '../images/headerimg.jpg'
 import './StartPage.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import runningimg from '../images/running1.jpg'
-import lifting from '../images/liftingimg2.png'
-import cardio from '../images/cardioimg2.png'
-import cardiotwo from '../images/cardioimg.png'
+import cardioimg from '../images/runrunrun.jpg'
+import liftingimg from '../images/lifting1.jpg'
+import cardioimg2 from '../images/runrunrun2.jpg'
+import liftingimg2 from '../images/lifting2.jpg'
 import { render } from '@testing-library/react';
 function Copyright() {
   return (
+    <Router>
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
@@ -31,6 +31,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+    </Router>
   );
 }
 
@@ -109,9 +110,9 @@ export default function Album() {
       
         <Toolbar className={classes.toolbar}>
           {/* <CameraIcon img src={homeimg} className={classes.icon} /> */}
-          
-            <Link to="/" style={{ textDecoration: 'none' }} color="white" style={{cursor: "pointer"}} >
-          <Typography variant="h6" color="inherit" noWrap>
+
+            <Link to="/" style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
             MRJ FITNESS
           </Typography>
           </Link>
@@ -152,8 +153,8 @@ export default function Album() {
               <Card className={classes.cards}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {runningimg}
-                    title="running"
+                    image= {cardioimg}
+                    title="first cardio image"
                   />
                   
                   <CardContent className={classes.cardContent}>
@@ -166,13 +167,13 @@ export default function Album() {
                   </CardContent>
                   <CardActions>
                     <Router>
-                    <Link to="/cardio">
+                    <Link to="/cardio" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
                     </Link>
                     </Router>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" >
                       Edit
                     </Button>
                   </CardActions>
@@ -182,7 +183,7 @@ export default function Album() {
               <Card className={classes.cards}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {lifting}
+                    image= {liftingimg}
                     title="Image title"
                   />
                   
@@ -196,7 +197,7 @@ export default function Album() {
                   </CardContent>
                   <CardActions>
                     <Router>
-                    <Link to="/cardio">
+                    <Link to="/lifting" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
@@ -212,7 +213,7 @@ export default function Album() {
               <Card className={classes.cards}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {cardio}
+                    image= {cardioimg2}
                     title="Image title"
                   />
                   
@@ -226,7 +227,7 @@ export default function Album() {
                   </CardContent>
                   <CardActions>
                     <Router>
-                    <Link to="/cardio">
+                    <Link to="/cardio/history" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
@@ -242,7 +243,7 @@ export default function Album() {
               <Card className={classes.cards}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {cardiotwo}
+                    image= {liftingimg2}
                     title="Image title"
                   />
                   
@@ -256,7 +257,7 @@ export default function Album() {
                   </CardContent>
                   <CardActions>
                     <Router>
-                    <Link to="/cardio">
+                    <Link to="/lifting/history" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
