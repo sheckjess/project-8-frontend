@@ -188,4 +188,6 @@ export default LiftSubmitter;
           }
         ]
     }
+
+    //Continuing thanks to Beau Carnes at freecodecamp for his MERN tutorial
 */

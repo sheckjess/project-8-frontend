@@ -1,12 +1,16 @@
-import { screen } from '@testing-library/react';
+//import { screen } from '@testing-library/react';
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount, render, } from 'enzyme';
 import LiftSubmitter from '../components/LiftSubmitter';
 
-test('Renders an element with the word "LiftSubmitter"', () => {
+it("renders without crashing", () => {
   shallow(<LiftSubmitter />);
-
-  
-  //const linkElement = screen.getByText(/LiftSubmitter/i);
-  //expect(linkElement).toBeInTheDocument();
 });
+
+it("renders the title text", () => {
+  const wrapper = shallow(<LiftSubmitter />);
+  const title = <h1>Add Lift</h1>;
+  expect(wrapper.contains(title)).toEqual(true);
+});
+
+// thanks to https://www.smashingmagazine.com/2020/06/practical-guide-testing-react-applications-jest/
