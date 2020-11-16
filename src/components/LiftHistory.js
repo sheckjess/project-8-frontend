@@ -25,6 +25,30 @@ class LiftHistory extends Component{
             })
     }
 
+    handleUpdate = (id) => {
+        console.log(id)
+        let url = "https://sculpt-fitness.herokuapp.com/lifting/update/" + id
+        console.log(url)
+    }
+
+    handleDelete = (id) => {
+        let url = "https://sculpt-fitness.herokuapp.com/lifting/delete/" + id
+        console.log(url)
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(hist => {
+                console.log(hist)
+                this.state.history = hist
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     render(){
         return(
@@ -35,12 +59,26 @@ class LiftHistory extends Component{
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
                     return <div key={i}>
-                        {lift.date}<br></br>
-                        {lift.musclegroup}<br></br>
-                        {lift.lift}<br></br>
-                        {lift.sets[0].reps} reps {lift.sets[0].pounds} lbs.<br></br>
-                        <br></br>
-                        <br></br>
+                        {lift.date}<br/>
+                        {lift.musclegroup}<br/>
+                        {lift.lift}<br/>
+                        {lift.sets[0].reps} reps {lift.sets[0].pounds} lbs.<br/>
+                        <Button
+                        onClick={() => {
+                            this.handleUpdate(lift._id)
+                        }}
+                        variant="contained">
+                            update
+                        </Button><br/>
+                        <Button
+                        onClick={() => {
+                            this.handleDelete(lift._id)
+                        }} 
+                        variant="contained"
+                        color="secondary">
+                            delete
+                        </Button><br/>
+                        <br/>
                         </div>
                     }) : ""
                     }

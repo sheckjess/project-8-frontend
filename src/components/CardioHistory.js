@@ -38,19 +38,21 @@ class CardioHistory extends Component{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-            },
+            }
         })
-            .then(res => {console.log(res)
-                return res.json()
-            })
+            .then(res => res.json())
             .then(hist => {
-                console.log(hist)
-                console.log('peepeepoopoo')
                 this.state.history = hist
             })
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    handleUpdate = (id) => {
+        console.log(id)
+        let url = "https://sculpt-fitness.herokuapp.com/cardio/specific/" + id
+        console.log(url)
     }
 
     render(){
@@ -62,19 +64,31 @@ class CardioHistory extends Component{
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
                     return <div key={i}>
-                        {lift.date}<br></br>
-                        {lift.type}<br></br>
-                        {lift.minutes} minutes<br></br>
-                        {lift.miles} miles<br></br>
-                        {lift.calories} cals<br></br>
-                        {lift._id}<br></br>
-                        <button onClick={() => {
+                        {lift.date}<br/>
+                        {lift.type}<br/>
+                        {lift.minutes} minutes<br/>
+                        {lift.miles} miles<br/>
+                        {lift.calories} cals<br/><br/>
+                        <Link to="/cardio/edit/">
+                            <Button
+                            onClick={() => {
+                                this.handleUpdate(lift._id)
+                            }}
+                            variant="contained">
+                                update
+                            </Button><br/>
+                        </Link>
+                        <Button
+                        onClick={() => {
                             this.handleDelete(lift._id)
-                        } }>
+                        }} 
+                        variant="contained"
+                        color="secondary">
                             delete
-                        </button>
-                        <br></br>
+                        </Button><br/>
+                        <br/>
                         </div>
+                        
                     }) : ""
                 }
                 <Link to='/cardio'>
