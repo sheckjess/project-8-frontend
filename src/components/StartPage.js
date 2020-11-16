@@ -16,7 +16,11 @@ import Link from '@material-ui/core/Link';
 import headerimg from '../images/headerimg.jpg'
 import './StartPage.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import homeimg from '../images/home.png'
+import runningimg from '../images/running1.jpg'
+import lifting from '../images/liftingimg2.png'
+import cardio from '../images/cardioimg2.png'
+import cardiotwo from '../images/cardioimg.png'
+import { render } from '@testing-library/react';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -69,13 +73,28 @@ const useStyles = makeStyles((theme) => ({
   toolbar:{
     backgroundColor: "black",
   },
+  paper: {
+    padding: theme.spacing(1), //grid padding
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
   container:{
     backgroundColor: "black",
   }
 }));
 
 
-const cards = [1, 2, 3, 4,];
+// const cards = [{runningimg}, {lifting}, {cardio}, {cardiotwo}];
+
+// const cards = [{img:{runningimg}, title: 'run one'},
+// {img:{lifting}, title: 'lift'},
+// {img:{cardio}, title: 'cardio'},
+// {img:{cardiotwo}, title: 'cardio two'}];
+
+let cards = [1,2,3,4]
+
+
+
 
 
 export default function Album() {
@@ -128,35 +147,133 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={2} sm={2} md={6}>
-                <Card className={classes.card}>
+          
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                    image= {runningimg}
+                    title="running"
                   />
+                  
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      Cardio
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the content.
                     </Typography>
                   </CardContent>
                   <CardActions>
+                    <Router>
+                    <Link to="/cardio">
                     <Button size="small" color="primary">
                       View
                     </Button>
+                    </Link>
+                    </Router>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {lifting}
+                    title="Image title"
+                  />
+                  
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Lifting
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Router>
+                    <Link to="/cardio">
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    </Link>
+                    </Router>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {cardio}
+                    title="Image title"
+                  />
+                  
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Cardio History
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Router>
+                    <Link to="/cardio">
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    </Link>
+                    </Router>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {cardiotwo}
+                    title="Image title"
+                  />
+                  
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Lifting History
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Router>
+                    <Link to="/cardio">
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    </Link>
+                    </Router>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              
+            
           </Grid>
+          
         </Container>
+        
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
