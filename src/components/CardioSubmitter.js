@@ -6,7 +6,6 @@ import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
-const axios = require("axios");
 
 class CardioSubmitter extends Component {
     constructor(props){

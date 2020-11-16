@@ -69,13 +69,15 @@ class CardioHistory extends Component{
                         {lift.minutes} minutes<br/>
                         {lift.miles} miles<br/>
                         {lift.calories} cals<br/><br/>
-                        <Button
-                        onClick={() => {
-                            this.handleUpdate(lift._id)
-                        }}
-                        variant="contained">
-                            update
-                        </Button><br/>
+                        <Link to="/cardio/edit/">
+                            <Button
+                            onClick={() => {
+                                this.handleUpdate(lift._id)
+                            }}
+                            variant="contained">
+                                update
+                            </Button><br/>
+                        </Link>
                         <Button
                         onClick={() => {
                             this.handleDelete(lift._id)

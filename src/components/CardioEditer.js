@@ -1,8 +1,12 @@
+import React, { Component } from "react";
 import { CollectionsOutlined } from '@material-ui/icons';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Container } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { InputLabel, Box } from '@material-ui/core';
 
-
-class CardioUpdater extends Component{
+class CardioEditer extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -13,7 +17,7 @@ class CardioUpdater extends Component{
             calories: ""
         }
     }
-    componentWillMount(){
+    componentDidMount(){
         this.getDetails()
     }
 
@@ -41,8 +45,12 @@ class CardioUpdater extends Component{
         return(
             <div>
                 <Container>
-                    <Link to="/cardio">
-                        <Button>
+                    <Box>
+                        <h1>{this.state.date}</h1>
+                    </Box>
+                    <Link to="/cardio/history">
+                        <Button
+                        variant="contained">
                             Cancel
                         </Button>
                     </Link>
@@ -52,4 +60,4 @@ class CardioUpdater extends Component{
     }
 }
 
-export default CardioUpdater
+export default CardioEditer
