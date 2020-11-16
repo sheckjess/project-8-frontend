@@ -55,6 +55,8 @@ class CardioHistory extends Component{
 
     handleUpdate = (id) => {
         console.log(id)
+        let url = "https://sculpt-fitness.herokuapp.com/cardio/update/" + id
+        console.log(url)
     }
 
     render(){
