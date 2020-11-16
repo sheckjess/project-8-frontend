@@ -1,7 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,13 +11,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import headerimg from '../images/headerimg.jpg'
 import './StartPage.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import homeimg from '../images/home.png'
+import cardioimg from '../images/runrunrun.jpg'
+import liftingimg from '../images/lifting1.jpg'
+import cardioimg2 from '../images/runrunrun2.jpg'
+import liftingimg2 from '../images/lifting2.jpg'
+import { render } from '@testing-library/react';
 function Copyright() {
   return (
+    <Router>
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
@@ -27,6 +31,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+    </Router>
   );
 }
 
@@ -69,13 +74,28 @@ const useStyles = makeStyles((theme) => ({
   toolbar:{
     backgroundColor: "black",
   },
+  paper: {
+    padding: theme.spacing(1), //grid padding
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
   container:{
     backgroundColor: "black",
   }
 }));
 
 
-const cards = [1, 2, 3, 4,];
+// const cards = [{runningimg}, {lifting}, {cardio}, {cardiotwo}];
+
+// const cards = [{img:{runningimg}, title: 'run one'},
+// {img:{lifting}, title: 'lift'},
+// {img:{cardio}, title: 'cardio'},
+// {img:{cardiotwo}, title: 'cardio two'}];
+
+let cards = [1,2,3,4]
+
+
+
 
 
 export default function Album() {
@@ -90,9 +110,9 @@ export default function Album() {
       
         <Toolbar className={classes.toolbar}>
           {/* <CameraIcon img src={homeimg} className={classes.icon} /> */}
-          
-            <Link to="/" style={{ textDecoration: 'none' }} color="white" style={{cursor: "pointer"}} >
-          <Typography variant="h6" color="inherit" noWrap>
+
+            <Link to="/" style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
             MRJ FITNESS
           </Typography>
           </Link>
@@ -128,35 +148,133 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={2} sm={2} md={6}>
-                <Card className={classes.card}>
+          
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                    image= {cardioimg}
+                    title="first cardio image"
                   />
+                  
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      Cardio
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the content.
                     </Typography>
                   </CardContent>
                   <CardActions>
+                    <Router>
+                    <Link to="/cardio" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
+                    </Link>
+                    </Router>
+                    <Button size="small" color="primary" >
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {liftingimg}
+                    title="Image title"
+                  />
+                  
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Lifting
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Router>
+                    <Link to="/lifting" style={{ textDecoration: 'none' }}>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    </Link>
+                    </Router>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {cardioimg2}
+                    title="Image title"
+                  />
+                  
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Cardio History
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Router>
+                    <Link to="/cardio/history" style={{ textDecoration: 'none' }}>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    </Link>
+                    </Router>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item key={cards} xs={2} sm={2} md={6}>
+              <Card className={classes.cards}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {liftingimg2}
+                    title="Image title"
+                  />
+                  
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Lifting History
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Router>
+                    <Link to="/lifting/history" style={{ textDecoration: 'none' }}>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    </Link>
+                    </Router>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              
+            
           </Grid>
+          
         </Container>
+        
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
