@@ -38,7 +38,7 @@ class CardioHistory extends Component{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-            },
+            }
         })
             .then(res => {console.log(res)
                 return res.json()
@@ -53,6 +53,10 @@ class CardioHistory extends Component{
             })
     }
 
+    handleUpdate = (id) => {
+        console.log(id)
+    }
+
     render(){
         return(
             <Container>
@@ -62,19 +66,29 @@ class CardioHistory extends Component{
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
                     return <div key={i}>
-                        {lift.date}<br></br>
-                        {lift.type}<br></br>
-                        {lift.minutes} minutes<br></br>
-                        {lift.miles} miles<br></br>
-                        {lift.calories} cals<br></br>
-                        {lift._id}<br></br>
-                        <button onClick={() => {
+                        {lift.date}<br/>
+                        {lift.type}<br/>
+                        {lift.minutes} minutes<br/>
+                        {lift.miles} miles<br/>
+                        {lift.calories} cals<br/><br/>
+                        <Button
+                        onClick={() => {
                             this.handleDelete(lift._id)
-                        } }>
+                        }} 
+                        variant="contained"
+                        color="secondary">
                             delete
-                        </button>
-                        <br></br>
+                        </Button><br/>
+                        <Button
+                        onClick={() => {
+                            this.handleUpdate(lift._id)
+                        }}
+                        variant="contained">
+                            update
+                        </Button><br/>
+                        <br/>
                         </div>
+                        
                     }) : ""
                 }
                 <Link to='/cardio'>
