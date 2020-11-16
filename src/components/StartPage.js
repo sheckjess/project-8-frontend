@@ -11,15 +11,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from "react-router-dom";
-import headerimg from '../images/headerimg.jpg'
-import './StartPage.css'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import cardioimg from '../images/runrunrun.jpg'
-import liftingimg from '../images/lifting1.jpg'
-import cardioimg2 from '../images/runrunrun2.jpg'
-import liftingimg2 from '../images/lifting2.jpg'
+// import { Link } from "react-router-dom";
+import headerimg from '../images/headerimg.jpg';
+import './StartPage.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import cardioimg from '../images/runrunrun.jpg';
+import liftingimg from '../images/lifting1.jpg';
+import cardioimg2 from '../images/runrunrun2.jpg';
+import liftingimg2 from '../images/lifting2.jpg';
 import { render } from '@testing-library/react';
+import {Link} from '@material-ui/core';
+
+
 function Copyright() {
   return (
     <Router>
@@ -98,12 +101,13 @@ let cards = [1,2,3,4]
 
 
 
-export default function Album() {
+export default function StartPage() {
   const classes = useStyles();
   
   
   return (
-    <React.Fragment>
+  
+    <Router>
       <CssBaseline />
       <Router>
       <AppBar position="relative">
@@ -111,7 +115,7 @@ export default function Album() {
         <Toolbar className={classes.toolbar}>
           {/* <CameraIcon img src={homeimg} className={classes.icon} /> */}
 
-            <Link to="/" style={{ textDecoration: 'none' , color: 'white'}}   >
+            <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
           <Typography variant="h6" color="inherit" noWrap >
             MRJ FITNESS
           </Typography>
@@ -126,9 +130,7 @@ export default function Album() {
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               MRJ FITNESS
             </Typography>
-            <Typography variant="h4" align="center" color="textSecondary" className="headertext" paragraph>
-              
-            </Typography>
+            
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
@@ -154,7 +156,7 @@ export default function Album() {
                   <CardMedia
                     className={classes.cardMedia}
                     image= {cardioimg}
-                    title="first cardio image"
+                    
                   />
                   
                   <CardContent className={classes.cardContent}>
@@ -166,13 +168,13 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Router>
-                    <Link to="/cardio" style={{ textDecoration: 'none' }}>
+                    
+                    <Link href= "/cardio"  style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
                     </Link>
-                    </Router>
+                    
                     <Button size="small" color="primary" >
                       Edit
                     </Button>
@@ -184,7 +186,7 @@ export default function Album() {
                   <CardMedia
                     className={classes.cardMedia}
                     image= {liftingimg}
-                    title="Image title"
+                    
                   />
                   
                   <CardContent className={classes.cardContent}>
@@ -196,13 +198,13 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Router>
-                    <Link to="/lifting" style={{ textDecoration: 'none' }}>
+                    
+                    <Link href="/lifting" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
                     </Link>
-                    </Router>
+                    
                     <Button size="small" color="primary">
                       Edit
                     </Button>
@@ -214,7 +216,7 @@ export default function Album() {
                   <CardMedia
                     className={classes.cardMedia}
                     image= {cardioimg2}
-                    title="Image title"
+                    
                   />
                   
                   <CardContent className={classes.cardContent}>
@@ -226,13 +228,13 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Router>
-                    <Link to="/cardio/history" style={{ textDecoration: 'none' }}>
+                    
+                    <Link href="/cardio/history" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
                     </Link>
-                    </Router>
+                    
                     <Button size="small" color="primary">
                       Edit
                     </Button>
@@ -244,7 +246,7 @@ export default function Album() {
                   <CardMedia
                     className={classes.cardMedia}
                     image= {liftingimg2}
-                    title="Image title"
+                    
                   />
                   
                   <CardContent className={classes.cardContent}>
@@ -256,13 +258,13 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Router>
-                    <Link to="/lifting/history" style={{ textDecoration: 'none' }}>
+                    
+                    <Link href="/lifting/history" style={{ textDecoration: 'none' }}>
                     <Button size="small" color="primary">
                       View
                     </Button>
                     </Link>
-                    </Router>
+                    
                     <Button size="small" color="primary">
                       Edit
                     </Button>
@@ -287,7 +289,7 @@ export default function Album() {
         <Copyright />
       </footer>
       {/* End footer */}
-    </React.Fragment>
+    </Router>
   );
 }
 
