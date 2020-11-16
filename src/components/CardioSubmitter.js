@@ -6,6 +6,7 @@ import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
+const axios = require("axios");
 
 class CardioSubmitter extends Component {
     constructor(props){
@@ -50,6 +51,13 @@ class CardioSubmitter extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
+        axios
+            .post("https://sculpt-fitness.herokuapp.com/cardio/add", this.state)
+            .then(() => {
+                console.log("attempt submission")
+                window.location ="/"
+            })
+        /*
         let url = "http://sculpt-fitness.herokuapp.com/cardio"
         fetch(url, {
         method: 'POST', 
@@ -63,6 +71,7 @@ class CardioSubmitter extends Component {
             this.setState({cardio: [...this.state.history, history]})
             console.log(this.state)
           })
+          */
       }
 
       handleHistory = (e) => {

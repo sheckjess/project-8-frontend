@@ -1,7 +1,11 @@
 import { render } from "@testing-library/react";
 import React, { Component } from "react";
-import axios from 'axios'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Container } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { InputLabel, Box } from '@material-ui/core';
+
 
 
 class CardioHistory extends Component{
@@ -21,11 +25,39 @@ class CardioHistory extends Component{
                 this.setState({history: history})
             })
     }
+    handleIdMap = (e) => {
+        for (let i = 0; i< this.state.history.length; i++){
+            this.state._id = this.state.history[i]._id
+            console.log(e)
+        }
+    }
+    handleDelete = (id) => {
+        let url = "https://sculpt-fitness.herokuapp.com/cardio/delete/" + id
+        console.log(url)
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => {console.log(res)
+                return res.json()
+            })
+            .then(hist => {
+                console.log(hist)
+                console.log('peepeepoopoo')
+                this.state.history = hist
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     render(){
         return(
-            <div>
-                <h1>This is the cardio history</h1>
+            <Container>
+                <h1>Your previous cardio workouts</h1>
+                <Box>
                 {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
@@ -35,21 +67,32 @@ class CardioHistory extends Component{
                         {lift.minutes} minutes<br></br>
                         {lift.miles} miles<br></br>
                         {lift.calories} cals<br></br>
+                        {lift._id}<br></br>
+                        <button onClick={() => {
+                            this.handleDelete(lift._id)
+                        } }>
+                            delete
+                        </button>
                         <br></br>
                         </div>
                     }) : ""
                 }
                 <Link to='/cardio'>
-                    <button>
+                    <Button
+                        variant="contained"
+                        color="primary">
                         Back
-                    </button>
+                    </Button>
                 </Link>
                 <Link to='/'>
-                    <button>
+                    <Button
+                        variant="contained"
+                        color="primary">
                         Home
-                    </button>
+                    </Button>
                 </Link>
-            </div>
+                </Box>
+            </Container>
         )
     }
 }
