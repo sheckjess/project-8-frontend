@@ -40,12 +40,8 @@ class CardioHistory extends Component{
                 'Content-Type': 'application/json',
             }
         })
-            .then(res => {console.log(res)
-                return res.json()
-            })
+            .then(res => res.json())
             .then(hist => {
-                console.log(hist)
-                console.log('peepeepoopoo')
                 this.state.history = hist
             })
             .catch(err => {
@@ -55,7 +51,7 @@ class CardioHistory extends Component{
 
     handleUpdate = (id) => {
         console.log(id)
-        let url = "https://sculpt-fitness.herokuapp.com/cardio/update/" + id
+        let url = "https://sculpt-fitness.herokuapp.com/cardio/specific/" + id
         console.log(url)
     }
 
@@ -75,18 +71,18 @@ class CardioHistory extends Component{
                         {lift.calories} cals<br/><br/>
                         <Button
                         onClick={() => {
+                            this.handleUpdate(lift._id)
+                        }}
+                        variant="contained">
+                            update
+                        </Button><br/>
+                        <Button
+                        onClick={() => {
                             this.handleDelete(lift._id)
                         }} 
                         variant="contained"
                         color="secondary">
                             delete
-                        </Button><br/>
-                        <Button
-                        onClick={() => {
-                            this.handleUpdate(lift._id)
-                        }}
-                        variant="contained">
-                            update
                         </Button><br/>
                         <br/>
                         </div>
