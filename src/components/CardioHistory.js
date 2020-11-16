@@ -5,7 +5,8 @@ import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
-const axios = require("axios");
+
+
 
 class CardioHistory extends Component{
     constructor(props){
@@ -24,16 +25,32 @@ class CardioHistory extends Component{
                 this.setState({history: history})
             })
     }
-
-    handleDelete = (e) => {
-        e.preventDefault()
-        console.log(e)
-        axios
-            .delete("https://sculpt-fitness.herokuapp.com/cardio/delete/", data)
-            .then(() => {
-                console.log(data)
+    handleIdMap = (e) => {
+        for (let i = 0; i< this.state.history.length; i++){
+            this.state._id = this.state.history[i]._id
+            console.log(e)
+        }
+    }
+    handleDelete = (id) => {
+        let url = "https://sculpt-fitness.herokuapp.com/cardio/delete/" + id
+        console.log(url)
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => {console.log(res)
+                return res.json()
             })
-            
+            .then(hist => {
+                console.log(hist)
+                console.log('peepeepoopoo')
+                this.state.history = hist
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render(){
@@ -50,7 +67,10 @@ class CardioHistory extends Component{
                         {lift.minutes} minutes<br></br>
                         {lift.miles} miles<br></br>
                         {lift.calories} cals<br></br>
-                        <button onClick={this.handleDelete}>
+                        {lift._id}<br></br>
+                        <button onClick={() => {
+                            this.handleDelete(lift._id)
+                        } }>
                             delete
                         </button>
                         <br></br>
