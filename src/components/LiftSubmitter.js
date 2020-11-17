@@ -18,7 +18,7 @@ class LiftSubmitter extends Component {
       musclegroup: "",
       lift: "",
       sets: [],
-      _numberOfSets: 0,
+      _numberOfSets: 0
     };
   }
   onChangeDate = (e) => {
