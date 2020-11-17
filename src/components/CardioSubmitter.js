@@ -54,7 +54,7 @@ class CardioSubmitter extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        // axios
+        axios
             .post("https://sculpt-fitness.herokuapp.com/cardio/add", this.state)
             .then(() => {
                 console.log("attempt submission")
