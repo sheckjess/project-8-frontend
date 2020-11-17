@@ -25,12 +25,15 @@ class CardioHistory extends Component{
                 this.setState({history: history})
             })
     }
-    handleIdMap = (e) => {
-        for (let i = 0; i< this.state.history.length; i++){
-            this.state._id = this.state.history[i]._id
-            console.log(e)
-        }
-    }
+
+
+    // handleIdMap = (e) => {
+    //     for (let i = 0; i< this.state.history.length; i++){
+    //         this.state._id = this.state.history[i]._id
+    //         console.log(e)
+    //     }
+    // }
+    
     handleDelete = (id) => {
         let url = "https://sculpt-fitness.herokuapp.com/cardio/delete/" + id
         console.log(url)
@@ -63,13 +66,14 @@ class CardioHistory extends Component{
                 {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
+                        console.log(lift)
                     return <div key={i}>
                         {lift.date}<br/>
                         {lift.type}<br/>
                         {lift.minutes} minutes<br/>
                         {lift.miles} miles<br/>
                         {lift.calories} cals<br/><br/>
-                        <Link to="/cardio/edit/">
+                        <Link to={`/cardio/edit/${lift._id}`}>
                             <Button
                             onClick={() => {
                                 this.handleUpdate(lift._id)

@@ -6,6 +6,7 @@ import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
+const axios = require("axios");
 
 
 
@@ -57,7 +58,7 @@ class CardioSubmitter extends Component {
             .post("https://sculpt-fitness.herokuapp.com/cardio/add", this.state)
             .then(() => {
                 console.log("attempt submission")
-                window.location ="/"
+                window.location ="/cardio/history"
             })
         /*
         let url = "http://sculpt-fitness.herokuapp.com/cardio"
