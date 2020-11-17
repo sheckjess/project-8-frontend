@@ -45,9 +45,8 @@ class CardioEditer extends Component {
     }
 
     onChangeDate = (e) => {
-        console.log(e.target)
-        this.setState({date: e.target})
-        console.log(this.state.date)
+        console.log(e)
+        this.setState({date: e})
     }
 
     onChangeCardioType = (e) => {
@@ -72,17 +71,16 @@ class CardioEditer extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        let logId = this.props.match.params.id;
+        let logId = this.props.match.params.id.toString()
         let url = "https://sculpt-fitness.herokuapp.com/cardio/update/" + logId
         console.log(this.state)
         fetch(url, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: this.state
+            body: JSON.stringify(this.state)
         })
-            .then(res => console.log(res))
             .then(res => res.json())
             .then(data=>{
                 console.log(data)
@@ -94,7 +92,8 @@ class CardioEditer extends Component {
                     calories: data.calories})
             })
             .catch(err => console.log(err))
-            //window.location = "/cardio/history/"
+            alert('Updated successfully!')
+            window.location = "/cardio/history/"
         }
 
 
@@ -166,7 +165,7 @@ class CardioEditer extends Component {
                     <Link to="/cardio/history">
                         <Button
                         variant="contained">
-                            Cancel
+                            Back
                         </Button>
                     </Link>
                 </Container>

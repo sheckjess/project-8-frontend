@@ -18,7 +18,7 @@ class LiftEditer extends Component {
           musclegroup: "",
           lift: "",
           sets: [],
-          _numberOfSets: 0,
+          _numberOfSets: 0
         };
       }
 
@@ -87,6 +87,7 @@ class LiftEditer extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
+
         let logId = this.props.match.params.id;
         let url = "https://sculpt-fitness.herokuapp.com/lifting/update/" + logId
         console.log(this.state)
@@ -95,9 +96,8 @@ class LiftEditer extends Component {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: this.state
+            body: JSON.stringify(this.state)
         })
-            .then(res => console.log(res))
             .then(res => res.json())
             .then(data=>{
                 console.log(data)
@@ -109,7 +109,8 @@ class LiftEditer extends Component {
                     _numberOfSets: data._numberOfSets})
             })
             .catch(err => console.log(err))
-            //window.location = "/lifting/history/"
+            alert("Updated successfully!")
+            window.location = "/lifting/history/"
         }
 
 
@@ -118,7 +119,7 @@ class LiftEditer extends Component {
         var arrayOfReps = [];
             for (let i = 0; i < this.state._numberOfSets; i++) {
             arrayOfReps.push(
-                <div>
+                <div key={i}>
                 <InputLabel>Set {i + 1} Reps: </InputLabel>
                 <Input
                     id={i}
