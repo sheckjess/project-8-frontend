@@ -74,14 +74,15 @@ class CardioEditer extends Component {
         e.preventDefault()
         let logId = this.props.match.params.id;
         let url = "https://sculpt-fitness.herokuapp.com/cardio/update/" + logId
+        console.log(this.state)
         fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(this.state)
-            //body: JSON.stringify(data)
+            body: this.state
         })
+            .then(res => console.log(res))
             .then(res => res.json())
             .then(data=>{
                 console.log(data)
@@ -93,7 +94,7 @@ class CardioEditer extends Component {
                     calories: data.calories})
             })
             .catch(err => console.log(err))
-            window.location = "/cardio/history/"
+            //window.location = "/cardio/history/"
         }
 
 

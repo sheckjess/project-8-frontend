@@ -63,13 +63,15 @@ class LiftHistory extends Component{
                         {lift.musclegroup}<br/>
                         {lift.lift}<br/>
                         {lift.sets[0].reps} reps {lift.sets[0].pounds} lbs.<br/>
-                        <Button
-                        onClick={() => {
-                            this.handleUpdate(lift._id)
-                        }}
-                        variant="contained">
-                            update
-                        </Button><br/>
+                        <Link to={`/lifting/edit/${lift._id}`}>
+                            <Button
+                            onClick={() => {
+                                this.handleUpdate(lift._id)
+                            }}
+                            variant="contained">
+                                update
+                            </Button>
+                        </Link><br/>
                         <Button
                         onClick={() => {
                             this.handleDelete(lift._id)
