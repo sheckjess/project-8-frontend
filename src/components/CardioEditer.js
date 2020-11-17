@@ -8,6 +8,7 @@ import { InputLabel, Box } from '@material-ui/core';
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 const axios = require("axios");
+const cors = require('cors')
 
 class CardioEditer extends Component {
     constructor(props){
@@ -72,12 +73,14 @@ class CardioEditer extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         let logId = this.props.match.params.id;
-        let url = "https://sculpt-fitness.herokuapp.com/cardio/specific/" + logId
+        let url = "https://sculpt-fitness.herokuapp.com/cardio/update/" + logId
         fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-            }
+            },
+            body: JSON.stringify(this.state)
+            //body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(data=>{
@@ -89,6 +92,8 @@ class CardioEditer extends Component {
                     miles: data.miles,
                     calories: data.calories})
             })
+            .catch(err => console.log(err))
+            window.location = "/cardio/history/"
         }
 
 

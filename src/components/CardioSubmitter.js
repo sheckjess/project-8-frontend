@@ -55,7 +55,7 @@ class CardioSubmitter extends Component {
             .post("https://sculpt-fitness.herokuapp.com/cardio/add", this.state)
             .then(() => {
                 console.log("attempt submission")
-                window.location ="/"
+                window.location ="/cardio/history"
             })
         /*
         let url = "http://sculpt-fitness.herokuapp.com/cardio"
