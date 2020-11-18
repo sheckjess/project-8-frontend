@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import App from '../App';
 
-test('renders learn react link', () => {
+it("renders without crashing", () => {
   shallow(<App />);
-
-  // const linkElement = screen.getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
+  
 });
+
+// thanks to https://www.smashingmagazine.com/2020/06/practical-guide-testing-react-applications-jest/
