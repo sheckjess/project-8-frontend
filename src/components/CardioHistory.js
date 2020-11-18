@@ -1,10 +1,14 @@
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
-import { Input } from '@material-ui/core';
+// import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { InputLabel, Box } from '@material-ui/core';
+import {  Box } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from '@material-ui/core';
 
 
 
@@ -60,34 +64,48 @@ class CardioHistory extends Component{
 
     render(){
         return(
-            <Container>
-                <h1>Your previous cardio workouts</h1>
+            <Router>
+      <AppBar position="relative">
+      
+        <Toolbar style= {{backgroundColor: 'black'}} >
+          
+            <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
+            MRJ FITNESS
+          </Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+            <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <h1>Your Previous Cardio Workouts</h1>
                 <Box>
                 {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
                         console.log(lift)
-                    return <div key={i}>
+                    return <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}
+                            key={i} >
                         {lift.date}<br/>
                         {lift.type}<br/>
                         {lift.minutes} minutes<br/>
                         {lift.miles} miles<br/>
                         {lift.calories} cals<br/><br/>
-                        <Link to={`/cardio/edit/${lift._id}`}>
-                            <Button
+                        <Link href={`/cardio/edit/${lift._id}`}>
+                            <Button style={{margin: '5px', backgroundColor: "black"}}
                             onClick={() => {
                                 this.handleUpdate(lift._id)
                             }}
-                            variant="contained">
+                            variant="contained"
+                            color='primary'>
                                 update
                             </Button><br/>
                         </Link>
-                        <Button
+                        <Button style={{margin: '5px', backgroundColor: "black"}}
                         onClick={() => {
                             this.handleDelete(lift._id)
                         }} 
                         variant="contained"
-                        color="secondary">
+                        color="primary">
                             delete
                         </Button><br/>
                         <br/>
@@ -95,15 +113,15 @@ class CardioHistory extends Component{
                         
                     }) : ""
                 }
-                <Link to='/cardio'>
-                    <Button
+                <Link href='/cardio'>
+                    <Button style={{margin: '5px', backgroundColor: "black"}}
                         variant="contained"
                         color="primary">
                         Back
                     </Button>
                 </Link>
-                <Link to='/'>
-                    <Button
+                <Link href='/'>
+                    <Button style={{margin: '5px', backgroundColor: "black"}}
                         variant="contained"
                         color="primary">
                         Home
@@ -111,6 +129,7 @@ class CardioHistory extends Component{
                 </Link>
                 </Box>
             </Container>
+            </Router>
         )
     }
 }

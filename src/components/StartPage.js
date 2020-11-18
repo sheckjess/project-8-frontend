@@ -14,12 +14,12 @@ import Container from '@material-ui/core/Container';
 // import { Link } from "react-router-dom";
 import headerimg from '../images/headerimg.jpg';
 import './StartPage.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import cardioimg from '../images/runrunrun.jpg';
 import liftingimg from '../images/lifting1.jpg';
 import cardioimg2 from '../images/runrunrun2.jpg';
 import liftingimg2 from '../images/lifting2.jpg';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import {Link} from '@material-ui/core';
 
 
@@ -164,7 +164,7 @@ export default function StartPage() {
                       Cardio
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      Create & Submit Your Cardio Routine
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -174,10 +174,6 @@ export default function StartPage() {
                       View
                     </Button>
                     </Link>
-                    
-                    <Button size="small" color="primary" >
-                      Edit
-                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -194,7 +190,7 @@ export default function StartPage() {
                       Lifting
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      Create & Submit Your Lifting Routine
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -204,10 +200,6 @@ export default function StartPage() {
                       View
                     </Button>
                     </Link>
-                    
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -224,7 +216,7 @@ export default function StartPage() {
                       Cardio History
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                     Access Your Cardio Routine. Update & Delete Available
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -234,10 +226,6 @@ export default function StartPage() {
                       View
                     </Button>
                     </Link>
-                    
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -254,7 +242,7 @@ export default function StartPage() {
                       Lifting History
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                    Access Your Lifting Routine. Update & Delete Available
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -264,10 +252,6 @@ export default function StartPage() {
                       View
                     </Button>
                     </Link>
-                    
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

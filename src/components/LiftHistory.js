@@ -1,10 +1,14 @@
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
-import { Input } from '@material-ui/core';
+// import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { InputLabel, Box } from '@material-ui/core';
+import { Box } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from '@material-ui/core';
 
 class LiftHistory extends Component{
     constructor(props){
@@ -52,47 +56,62 @@ class LiftHistory extends Component{
 
     render(){
         return(
-            <Container>
-                <h1>Your previous lifts</h1>
-                <Box>
+            <Router>
+            <AppBar position="relative">
+      
+        <Toolbar style={{backgroundColor:"black"}}>
+
+            <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
+            MRJ FITNESS
+          </Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      
+            <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <h1>Your Previous Lifts</h1>
+                <Box style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
-                    return <div key={i}>
+                    return <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}
+                        key={i}>
                         {lift.date}<br/>
                         {lift.musclegroup}<br/>
                         {lift.lift}<br/>
                         {lift.sets[0].reps} reps {lift.sets[0].pounds} lbs.<br/>
-                        <Link to={`/lifting/edit/${lift._id}`}>
-                            <Button
+                        <Link href={`/lifting/edit/${lift._id}`}>
+                            <Button style={{margin: '5px', backgroundColor: "black"}}
                             onClick={() => {
                                 this.handleUpdate(lift._id)
                             }}
-                            variant="contained">
+                            variant="contained"
+                            color="primary">
                                 update
                             </Button>
                         </Link><br/>
-                        <Button
+                        <Button style={{margin: '5px', backgroundColor: "black"}}
                         onClick={() => {
                             this.handleDelete(lift._id)
                         }} 
                         variant="contained"
-                        color="secondary">
+                        color="primary">
                             delete
                         </Button><br/>
                         <br/>
                         </div>
                     }) : ""
                     }
-                <Link to='/lifting'>
-                    <Button
+                <Link href='/lifting'>
+                    <Button style={{margin: '5px', backgroundColor: "black"}}
                         variant="contained"
                         color="primary">
                         Back
                     </Button>
                 </Link>
-                <Link to='/'>
-                    <Button
+                <Link href='/'>
+                    <Button style={{margin: '5px', backgroundColor: "black"}}
                         variant="contained"
                         color="primary">
                         Home
@@ -100,6 +119,7 @@ class LiftHistory extends Component{
                 </Link>
                 </Box>
             </Container>
+            </Router>
         )
     }
 }

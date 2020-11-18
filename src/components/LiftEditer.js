@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import { CollectionsOutlined } from '@material-ui/icons';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+// import { CollectionsOutlined } from '@material-ui/icons';
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-const axios = require("axios");
-const cors = require('cors')
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from '@material-ui/core';
+// const axios = require("axios");
+// const cors = require('cors')
 
 class LiftEditer extends Component {
     constructor(props) {
@@ -145,20 +149,35 @@ class LiftEditer extends Component {
             );
             }
         return(
-            <div>
-                <Container>
+            <Router>
+            <AppBar position="relative">
+            
+              <Toolbar style= {{backgroundColor: 'black'}} >
+                
+                  <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
+                <Typography variant="h6" color="inherit" noWrap >
+                  MRJ FITNESS
+                </Typography>
+                </Link>
+              </Toolbar>
+            </AppBar>
+
+            <div >
+                <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Box>
-                        <h1>Edit lifting entry</h1>
+                        <h1>Edit Lifting Entry</h1>
                     </Box>
                     <Box>
-                        <form onSubmit={this.onSubmit}>
+                        <form style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}
+                        onSubmit={this.onSubmit}>
                             <div className="">
                                 <InputLabel>Date: </InputLabel>
                                 <Calendar defaultView="month" onChange={this.onChangeDate} />
                             </div>
-                            <div className="">
-                                <InputLabel>Muscle Group: </InputLabel>
-                                <select
+                            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin:"5px"}}>
+                                <InputLabel style={{margin:"5px"}}
+                                >Muscle Group: </InputLabel>
+                                <select 
                                     required
                                     onChange={this.onChangeMuscleGroup}
                                     value={this.state.musclegroup}>
@@ -190,7 +209,7 @@ class LiftEditer extends Component {
                                 ></Input>
                             </div>
                             {arrayOfReps}
-                            <Button
+                            <Button style={{margin: '5px', backgroundColor: "black"}}
                             variant="contained"
                             color="primary"
                             type="submit"
@@ -200,14 +219,16 @@ class LiftEditer extends Component {
                             </Button>
                         </form>
                     </Box>
-                    <Link to="/lifting/history">
-                        <Button
-                        variant="contained">
+                    <Link href="/lifting/history">
+                        <Button style={{margin: '5px', backgroundColor: "black"}}
+                        variant="contained"
+                        color="primary">
                             Cancel
                         </Button>
                     </Link>
                 </Container>
             </div>
+            </Router>
         )
     }
 }

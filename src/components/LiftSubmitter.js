@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // eslint-disable-next-line
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router} from 'react-router-dom';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 // Material UI
@@ -8,6 +8,10 @@ import { Container } from "@material-ui/core";
 import { Input } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { InputLabel, Box } from "@material-ui/core";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from '@material-ui/core';
 const axios = require("axios");
 
 class LiftSubmitter extends Component {
@@ -104,17 +108,30 @@ class LiftSubmitter extends Component {
       );
     }
     return (
-      <Container>
+      <Router>
+      <AppBar position="relative">
+      
+        <Toolbar style= {{backgroundColor: 'black'}} >
+          
+            <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
+            MRJ FITNESS
+          </Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+
+      <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
         <h1>Add Lift</h1>
         <Box maxWidth={400}>
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
             <div className="">
               <InputLabel>Date: </InputLabel>
               <Calendar defaultView="month" onChange={this.onChangeDate} />
             </div>
-            <div className="">
+            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin: "5px"}}>
               <InputLabel>Muscle Group: </InputLabel>
-              <select
+              <select style= {{margin: '5px'}}
                 required
                 onChange={this.onChangeMuscleGroup}
                 value={this.state.musclegroup}
@@ -125,16 +142,16 @@ class LiftSubmitter extends Component {
                 <option>Back</option>
               </select>
             </div>
-            <div className="">
+            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
               <InputLabel>Lift Name: </InputLabel>
-              <Input
+              <Input style={{margin: '5px'}}
                 required
                 onChange={this.onChangeLiftName}
                 type="text"
                 placeholder="Squat"
               ></Input>
             </div>
-            <div className="">
+            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
               <InputLabel>Sets: </InputLabel>
               <Input
                 required
@@ -147,7 +164,7 @@ class LiftSubmitter extends Component {
               ></Input>
             </div>
             {arrayOfReps}
-            <Button
+            <Button style={{margin: '5px', backgroundColor: "black"}}
               variant="contained"
               color="primary"
               type="submit"
@@ -155,15 +172,17 @@ class LiftSubmitter extends Component {
             >
               Submit
             </Button>
-          </form>
-          <Link to="/lifting/history">
-            <Button variant="contained"
+            <Link href="/lifting/history">
+            <Button style={{margin: '5px', backgroundColor: "black"}}
+              variant="contained"
               color="primary"
               type="submit"
               className="">Lifting History</Button>
           </Link>
+          </form>
         </Box>
       </Container>
+      </Router>
     );
   }
 }
