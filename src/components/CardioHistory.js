@@ -12,6 +12,7 @@ import {Link} from '@material-ui/core';
 
 
 
+
 class CardioHistory extends Component{
     constructor(props){
         super(props)
@@ -63,6 +64,19 @@ class CardioHistory extends Component{
     }
 
     render(){
+        
+        const centerit = {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+        }
+         
+        const nicebuttons = {
+            margin: "5px",
+            backgroundColor: "black"
+        }
+
         return(
             <Router>
       <AppBar position="relative">
@@ -76,14 +90,14 @@ class CardioHistory extends Component{
           </Link>
         </Toolbar>
       </AppBar>
-            <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+            <Container style={centerit}>
                 <h1>Your Previous Cardio Workouts</h1>
                 <Box>
                 {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
                         console.log(lift)
-                    return <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}
+                    return <div style={centerit}
                             key={i} >
                         {lift.date}<br/>
                         {lift.type}<br/>
@@ -91,7 +105,7 @@ class CardioHistory extends Component{
                         {lift.miles} miles<br/>
                         {lift.calories} cals<br/><br/>
                         <Link href={`/cardio/edit/${lift._id}`}>
-                            <Button style={{margin: '5px', backgroundColor: "black"}}
+                            <Button style={nicebuttons}
                             onClick={() => {
                                 this.handleUpdate(lift._id)
                             }}
@@ -100,7 +114,7 @@ class CardioHistory extends Component{
                                 update
                             </Button><br/>
                         </Link>
-                        <Button style={{margin: '5px', backgroundColor: "black"}}
+                        <Button style={nicebuttons}
                         onClick={() => {
                             this.handleDelete(lift._id)
                         }} 
@@ -114,14 +128,14 @@ class CardioHistory extends Component{
                     }) : ""
                 }
                 <Link href='/cardio'>
-                    <Button style={{margin: '5px', backgroundColor: "black"}}
+                    <Button style={nicebuttons}
                         variant="contained"
                         color="primary">
                         Back
                     </Button>
                 </Link>
                 <Link href='/'>
-                    <Button style={{margin: '5px', backgroundColor: "black"}}
+                    <Button style={nicebuttons}
                         variant="contained"
                         color="primary">
                         Home

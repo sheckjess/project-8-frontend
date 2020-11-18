@@ -11,6 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {Link} from '@material-ui/core';
+
 // const axios = require("axios");
 // const cors = require('cors')
 
@@ -120,6 +121,20 @@ class LiftEditer extends Component {
 
 
     render(){
+      const centerit = {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+    }
+     
+      const nicebuttons = {
+        margin: "5px",
+        backgroundColor: "black"
+    };
+
+
+
         var arrayOfReps = [];
             for (let i = 0; i < this.state._numberOfSets; i++) {
             arrayOfReps.push(
@@ -162,19 +177,19 @@ class LiftEditer extends Component {
               </Toolbar>
             </AppBar>
 
-            <div >
-                <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+            <div>
+                <Container style={centerit}>
                     <Box>
                         <h1>Edit Lifting Entry</h1>
                     </Box>
-                    <Box>
-                        <form style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}
+                    <Box >
+                        <form style={centerit}
                         onSubmit={this.onSubmit}>
-                            <div className="">
+                            <div>
                                 <InputLabel>Date: </InputLabel>
                                 <Calendar defaultView="month" onChange={this.onChangeDate} />
                             </div>
-                            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin:"5px"}}>
+                            <div style={{margin:"5px", centerit}}>
                                 <InputLabel style={{margin:"5px"}}
                                 >Muscle Group: </InputLabel>
                                 <select 
@@ -209,18 +224,19 @@ class LiftEditer extends Component {
                                 ></Input>
                             </div>
                             {arrayOfReps}
-                            <Button style={{margin: '5px', backgroundColor: "black"}}
+                            <Button
                             variant="contained"
                             color="primary"
                             type="submit"
-                            className=""
+                            style={nicebuttons}
                             >
                             Submit
                             </Button>
                         </form>
                     </Box>
                     <Link href="/lifting/history">
-                        <Button style={{margin: '5px', backgroundColor: "black"}}
+                        <Button 
+                        style={nicebuttons}
                         variant="contained"
                         color="primary">
                             Cancel

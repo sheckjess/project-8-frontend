@@ -86,6 +86,20 @@ class CardioSubmitter extends Component {
       } 
 
     render(){
+
+        
+        const centerit = {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+        }
+         
+        const nicebuttons = {
+            margin: "5px",
+            backgroundColor: "black"
+        }
+    
         return(
             <Router>
       <AppBar position="relative">
@@ -101,11 +115,11 @@ class CardioSubmitter extends Component {
       </AppBar>
       
 
-            <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+            <Container style={centerit}>
                 <h1>Add Cardio</h1>
-                <Box maxWidth={400}>
-                <form onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-                    <div>
+                <Box maxWidth={400} >
+                <form onSubmit={this.onSubmit} style={centerit}>
+                    <div >
                         <InputLabel>Date: </InputLabel>
                         <Calendar 
                             defaultView="month"
@@ -113,7 +127,7 @@ class CardioSubmitter extends Component {
                         />
                     </div>
                     <div>
-                        <InputLabel style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin:"5px"}}>Cardio Type: </InputLabel>
+                        <InputLabel style={{margin:"5px", centerit}}>Cardio Type: </InputLabel>
                         <select style={{margin:"5px"}}
                         required 
                         onChange={this.onChangeCardioType}
@@ -151,17 +165,18 @@ class CardioSubmitter extends Component {
                             placeholder="Calories burned...">
                         </Input>
                     </div>
-                    <Button style={{margin: '5px', backgroundColor: "black"}}
+                    <Button
                         variant="contained"
                         color="primary"
                         type="submit"
-                        className="">
+                        style={nicebuttons}>
                         Submit
                     </Button>
                     <Link href="/cardio/history">
-                    <Button style={{margin: '5px', backgroundColor: "black"}}
+                    <Button
                     variant="contained"
                     color="primary"
+                    style={nicebuttons}
                     onClick={this.handleHistory}>
                         Cardio History
                     </Button>

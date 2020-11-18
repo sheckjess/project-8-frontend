@@ -12,6 +12,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {Link} from '@material-ui/core';
+
 const axios = require("axios");
 
 class LiftSubmitter extends Component {
@@ -78,6 +79,20 @@ class LiftSubmitter extends Component {
       });
   };
   render() {
+
+    const centerit = {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center"
+  }
+   
+    const nicebuttons = {
+      margin: "5px",
+      backgroundColor: "black"
+  };
+
+
     //create a reps element for each number in numberOfSets
     var arrayOfReps = [];
     for (let i = 0; i < this.state._numberOfSets; i++) {
@@ -121,15 +136,15 @@ class LiftSubmitter extends Component {
         </Toolbar>
       </AppBar>
 
-      <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+      <Container style={centerit}>
         <h1>Add Lift</h1>
         <Box maxWidth={400}>
-          <form onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-            <div className="">
+          <form onSubmit={this.onSubmit} style={centerit}>
+            <div>
               <InputLabel>Date: </InputLabel>
               <Calendar defaultView="month" onChange={this.onChangeDate} />
             </div>
-            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin: "5px"}}>
+            <div style={{margin: "5px", centerit}}>
               <InputLabel>Muscle Group: </InputLabel>
               <select style= {{margin: '5px'}}
                 required
@@ -142,7 +157,7 @@ class LiftSubmitter extends Component {
                 <option>Back</option>
               </select>
             </div>
-            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+            <div>
               <InputLabel>Lift Name: </InputLabel>
               <Input style={{margin: '5px'}}
                 required
@@ -151,7 +166,7 @@ class LiftSubmitter extends Component {
                 placeholder="Squat"
               ></Input>
             </div>
-            <div className="" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+            <div>
               <InputLabel>Sets: </InputLabel>
               <Input
                 required
@@ -164,20 +179,20 @@ class LiftSubmitter extends Component {
               ></Input>
             </div>
             {arrayOfReps}
-            <Button style={{margin: '5px', backgroundColor: "black"}}
+            <Button 
               variant="contained"
               color="primary"
               type="submit"
-              className=""
+              style={nicebuttons}
             >
               Submit
             </Button>
             <Link href="/lifting/history">
-            <Button style={{margin: '5px', backgroundColor: "black"}}
+            <Button 
               variant="contained"
               color="primary"
               type="submit"
-              className="">Lifting History</Button>
+              style={nicebuttons}>Lifting History</Button>
           </Link>
           </form>
         </Box>
