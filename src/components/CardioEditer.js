@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import { CollectionsOutlined } from '@material-ui/icons';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+// import { CollectionsOutlined } from '@material-ui/icons';
+import { BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-const axios = require("axios");
-const cors = require('cors')
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from '@material-ui/core';
+// const axios = require("axios");
+// const cors = require('cors')
 
 class CardioEditer extends Component {
     constructor(props){
@@ -100,13 +104,26 @@ class CardioEditer extends Component {
 
     render(){
         return(
+            <Router>
+      <AppBar position="relative">
+      
+        <Toolbar style= {{backgroundColor: 'black'}} >
+          
+            <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
+            MRJ FITNESS
+          </Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+
             <div>
-                <Container>
+                <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <Box>
-                        <h1>Edit carido entry</h1>
+                        <h1>Edit Cardio Entry</h1>
                     </Box>
                     <Box>
-                        <form onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit} onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                             <div>
                                 <InputLabel>Date: </InputLabel>
                                 <Calendar 
@@ -115,8 +132,8 @@ class CardioEditer extends Component {
                                 />
                             </div>
                             <div>
-                                <InputLabel>Cardio Type: </InputLabel>
-                                <select 
+                                <InputLabel onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin:"5px"}}>Cardio Type: </InputLabel>
+                                <select style={{margin:"5px"}}
                                 required 
                                 onChange={this.onChangeCardioType}
                                 type="select">
@@ -153,23 +170,25 @@ class CardioEditer extends Component {
                                     placeholder="Calories burned...">
                                 </Input>
                             </div>
-                                <Button
+                                <Button style={{margin: '5px', backgroundColor: "black"}}
                                     variant="contained"
                                     color="primary"
                                     type="submit"
                                     className="">
                                     Submit
                                 </Button>
+                                <Link href="/cardio/history">
+                                <Button style={{margin: '5px', backgroundColor: "black"}}
+                                    variant="contained"
+                                    color='primary'>
+                                    Back
+                                </Button>
+                                </Link>
                         </form>
                     </Box>
-                    <Link to="/cardio/history">
-                        <Button
-                        variant="contained">
-                            Back
-                        </Button>
-                    </Link>
                 </Container>
             </div>
+            </Router>
         )
     }
 }

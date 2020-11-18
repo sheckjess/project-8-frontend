@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from 'react'
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import CardioSubmitter from './components/CardioSubmitter'
 import LiftSubmitter from './components/LiftSubmitter'
 import CardioHistory from './components/CardioHistory'

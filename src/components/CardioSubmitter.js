@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { InputLabel, Box } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from '@material-ui/core';
 const axios = require("axios");
 
 
@@ -83,10 +87,24 @@ class CardioSubmitter extends Component {
 
     render(){
         return(
-            <Container>
+            <Router>
+      <AppBar position="relative">
+      
+        <Toolbar style= {{backgroundColor: 'black'}} >
+          
+            <Link href="/"  style={{ textDecoration: 'none' , color: 'white'}}   >
+          <Typography variant="h6" color="inherit" noWrap >
+            MRJ FITNESS
+          </Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      
+
+            <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                 <h1>Add Cardio</h1>
                 <Box maxWidth={400}>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                     <div>
                         <InputLabel>Date: </InputLabel>
                         <Calendar 
@@ -95,8 +113,8 @@ class CardioSubmitter extends Component {
                         />
                     </div>
                     <div>
-                        <InputLabel>Cardio Type: </InputLabel>
-                        <select 
+                        <InputLabel style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin:"5px"}}>Cardio Type: </InputLabel>
+                        <select style={{margin:"5px"}}
                         required 
                         onChange={this.onChangeCardioType}
                         type="select">
@@ -133,24 +151,25 @@ class CardioSubmitter extends Component {
                             placeholder="Calories burned...">
                         </Input>
                     </div>
-                    <Button
+                    <Button style={{margin: '5px', backgroundColor: "black"}}
                         variant="contained"
                         color="primary"
                         type="submit"
                         className="">
                         Submit
                     </Button>
-                </form>
-                <Link to="/cardio/history">
-                    <Button 
+                    <Link href="/cardio/history">
+                    <Button style={{margin: '5px', backgroundColor: "black"}}
                     variant="contained"
                     color="primary"
                     onClick={this.handleHistory}>
                         Cardio History
                     </Button>
                 </Link>
+                </form>
                 </Box>
             </Container>
+            </Router>
         )
     }
 }
