@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {Link} from '@material-ui/core';
 
+
 class LiftHistory extends Component{
     constructor(props){
         super(props)
@@ -55,6 +56,18 @@ class LiftHistory extends Component{
     }
 
     render(){
+        const centerit = {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+        }
+         
+          const nicebuttons = {
+            margin: "5px",
+            backgroundColor: "black"
+        };
+
         return(
             <Router>
             <AppBar position="relative">
@@ -69,32 +82,34 @@ class LiftHistory extends Component{
         </Toolbar>
       </AppBar>
       
-            <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+            <Container style={centerit}>
                 <h1>Your Previous Lifts</h1>
-                <Box style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <Box>
                     {
                     this.state.history.length ?
                     this.state.history.map((lift, i)=>{
-                    return <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}
+                    return <div style={centerit}
                         key={i}>
                         {lift.date}<br/>
                         {lift.musclegroup}<br/>
                         {lift.lift}<br/>
                         {lift.sets[0].reps} reps {lift.sets[0].pounds} lbs.<br/>
                         <Link href={`/lifting/edit/${lift._id}`}>
-                            <Button style={{margin: '5px', backgroundColor: "black"}}
+                            <Button
                             onClick={() => {
                                 this.handleUpdate(lift._id)
                             }}
                             variant="contained"
-                            color="primary">
+                            color="primary"
+                            style={nicebuttons}>
                                 update
                             </Button>
                         </Link><br/>
-                        <Button style={{margin: '5px', backgroundColor: "black"}}
+                        <Button 
                         onClick={() => {
                             this.handleDelete(lift._id)
                         }} 
+                        style={nicebuttons}
                         variant="contained"
                         color="primary">
                             delete
@@ -104,14 +119,16 @@ class LiftHistory extends Component{
                     }) : ""
                     }
                 <Link href='/lifting'>
-                    <Button style={{margin: '5px', backgroundColor: "black"}}
+                    <Button 
+                        style={nicebuttons}
                         variant="contained"
                         color="primary">
                         Back
                     </Button>
                 </Link>
                 <Link href='/'>
-                    <Button style={{margin: '5px', backgroundColor: "black"}}
+                    <Button 
+                        style={nicebuttons}
                         variant="contained"
                         color="primary">
                         Home

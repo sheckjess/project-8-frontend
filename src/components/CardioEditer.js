@@ -11,6 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {Link} from '@material-ui/core';
+
 // const axios = require("axios");
 // const cors = require('cors')
 
@@ -103,6 +104,18 @@ class CardioEditer extends Component {
 
 
     render(){
+        const centerit = {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+        }
+         
+        const nicebuttons = {
+            margin: "5px",
+            backgroundColor: "black"
+        }
+
         return(
             <Router>
       <AppBar position="relative">
@@ -118,12 +131,12 @@ class CardioEditer extends Component {
       </AppBar>
 
             <div>
-                <Container style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                <Container style={centerit} >
                     <Box>
                         <h1>Edit Cardio Entry</h1>
                     </Box>
                     <Box>
-                        <form onSubmit={this.onSubmit} onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                        <form onSubmit={this.onSubmit} style={centerit} >
                             <div>
                                 <InputLabel>Date: </InputLabel>
                                 <Calendar 
@@ -132,7 +145,7 @@ class CardioEditer extends Component {
                                 />
                             </div>
                             <div>
-                                <InputLabel onSubmit={this.onSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin:"5px"}}>Cardio Type: </InputLabel>
+                                <InputLabel onSubmit={this.onSubmit} style={{centerit ,margin:'5px'}}>Cardio Type: </InputLabel>
                                 <select style={{margin:"5px"}}
                                 required 
                                 onChange={this.onChangeCardioType}
@@ -170,15 +183,17 @@ class CardioEditer extends Component {
                                     placeholder="Calories burned...">
                                 </Input>
                             </div>
-                                <Button style={{margin: '5px', backgroundColor: "black"}}
+                                <Button 
+                                    style={nicebuttons}
                                     variant="contained"
                                     color="primary"
                                     type="submit"
-                                    className="">
+                                    >
                                     Submit
                                 </Button>
                                 <Link href="/cardio/history">
-                                <Button style={{margin: '5px', backgroundColor: "black"}}
+                                <Button 
+                                    style={nicebuttons}
                                     variant="contained"
                                     color='primary'>
                                     Back
@@ -194,3 +209,4 @@ class CardioEditer extends Component {
 }
 
 export default CardioEditer
+
