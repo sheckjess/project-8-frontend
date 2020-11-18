@@ -21,7 +21,7 @@ class LiftHistory extends Component{
 
 
     componentDidMount = () => {
-        let url = "http://sculpt-fitness.herokuapp.com/lifting"
+        let url = "https://sculpt-fitness.herokuapp.com/lifting"
         fetch(url)
             .then(res => res.json())
             .then(history=>{
