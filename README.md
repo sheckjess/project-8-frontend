@@ -1,5 +1,5 @@
 # Project 8 Front End
-This is the frton-end of a fitness-tracking application (weight-lifting and cardio) built in React. It utilizes back-end API data that was created with node-js and uses material-ui design on the frontend.
+This is the front-end of a fitness-tracking application (weight-lifting and cardio) built in React. It utilizes back-end API data that was created with node-js and uses material-ui design on the frontend.
 
 ## Components
 This application has full CRUD functionality across several components with the goals of creating and updating workout history. 
